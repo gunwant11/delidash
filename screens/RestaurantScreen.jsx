@@ -75,9 +75,10 @@ const RestaurantScreen = () => {
                     </Text>
                     <ChevronRightIcon color="00CCBB" />
                 </TouchableOpacity>
+                    </View>
 
-                <View>
-                    <Text className="px-4 pt-6 mb-3 font-bold text-lg">Menu</Text>
+                <View className="pb-32">
+                    <Text className="px-4 pt-3 mb-3 font-bold text-lg">Menu</Text>
                     {
                       dishes &&  dishes?.map((dish) => (
                             <DishRow
@@ -92,7 +93,6 @@ const RestaurantScreen = () => {
                     }
                 </View>
 
-            </View>
 
         </ScrollView>
         <BasketIcon/>

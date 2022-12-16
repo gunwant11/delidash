@@ -32,7 +32,7 @@ export const basketSlice = createSlice({
 
 export const { addToBasket ,  removeFromBasket } = basketSlice.actions
 
-export const selectBasketItems = (state) => state &&  state?.baskeReducer?.items;
+export const selectBasketItems = (state) =>  state.baskeReducer.items;
 export const selectBasketItemsWithId = (state, id) => 
     state && state?.baskeReducer?.items.filter((item)=> item.id === id)
 
