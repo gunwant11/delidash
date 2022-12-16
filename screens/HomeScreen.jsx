@@ -6,7 +6,7 @@ import { Categories } from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import client  from '../sanity';
 // import { SafeAreaView } from 'react-native-safe-area-context';
-export const HomeScreen = () => {
+export default  HomeScreen = () => {
 
   const navigation = useNavigation();
   const [ featuredCategory, setFeaturedCategory ] = React.useState(null);
@@ -30,13 +30,13 @@ export const HomeScreen = () => {
   },)
 
   return (
-    <SafeAreaView className="bg-white pt-5">
+    <SafeAreaView className="bg-white pt-6">
       {/* Header */}
       <View className="flex-row pb-3 items-center mx-4 space-x-2  " >
         <Image source={{
           uri: "https://links.papareact.com/3pn"
         }}
-        className="w-7 h-7 rounded-full  bg-slate-400 "
+        className="w-10 h-10 rounded-full  bg-slate-400 "
         />
         <View className="flex-1" >
           <Text className="font-bold text-gray-400 text-xs ">Deliver Now!</Text>

@@ -23,7 +23,7 @@ const RestaurantCard = ({
     
 
     return (
-        <TouchableOpacity className="bg-white mr-3 shadow " onPress={ ()=> navigation.navigate('Restaurant',{
+        <TouchableOpacity className="bg-white mr-3 shadow w-64 " onPress={ ()=> navigation.navigate('Restaurant',{
             id,
             imgUrl,
             title,

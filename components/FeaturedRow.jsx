@@ -16,7 +16,7 @@ const FeaturedRow = ({id, title, description}) => {
         ...,
         dishes[]->,
         type->{
-          name
+          title
         }
         
         }
@@ -53,7 +53,7 @@ const FeaturedRow = ({id, title, description}) => {
                   imgUrl={  urlFor( restaurant?.image).url() }
                   title={restaurant?.name}
                   rating={restaurant?.rating}
-                  genre={restaurant?.type?.name}
+                  genre={restaurant?.type?.title}
                   address={restaurant?.address}
                   short_description={restaurant?.short_description}
                   dishes={restaurant?.dishes}
@@ -62,55 +62,6 @@ const FeaturedRow = ({id, title, description}) => {
                 />
               )
               )}
-
-            <RestaurantCard 
-                id="123"
-                imgUrl="https://links.papareact.com/gn7"
-                title="YO! Sudhi"
-                rating={4.5}
-                genre="Japanese"
-                address="123 Main Street"
-                short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-                dishes={[]}
-                long={20}
-                lat={0}
-            />
-            <RestaurantCard 
-                id="123"
-                imgUrl="https://links.papareact.com/gn7"
-                title="YO! Sudhi"
-                rating={4.5}
-                genre="Japanese"
-                address="123 Main Street"
-                short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-                dishes={[]}
-                long={20}
-                lat={0}
-            />
-            <RestaurantCard 
-                id="123"
-                imgUrl="https://links.papareact.com/gn7"
-                title="YO! Sudhi"
-                rating={4.5}
-                genre="Japanese"
-                address="123 Main Street"
-                short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-                dishes={[]}
-                long={20}
-                lat={0}
-            />
-            <RestaurantCard 
-                id="123"
-                imgUrl="https://links.papareact.com/gn7"
-                title="YO! Sudhi"
-                rating={4.5}
-                genre="Japanese"
-                address="123 Main Street"
-                short_description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-                dishes={[]}
-                long={20}
-                lat={0}
-            />
                 </ScrollView>
     </View>
   )
