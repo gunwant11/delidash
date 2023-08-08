@@ -1,10 +1,12 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
 import React, { useMemo, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectRestaurant } from '../redux/restaurentSlice'
 import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
 import { XCircleIcon } from 'react-native-heroicons/solid'
+import axios from 'axios'
+import { useStripe } from '@stripe/stripe-react-native'
 
 const BasketScreen = () => {
 
@@ -14,7 +16,7 @@ const BasketScreen = () => {
   const dispatch = useDispatch()
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
   const basketTotal = useSelector(selectBasketTotal)
-
+  const { initPaymentSheet, presentPaymentSheet } = useStripe()
   useMemo(() => {
     // const groupedItems = items.reduce((results, item) => {
     //   (results[items.id] = results[items.id] || []).push(item);
@@ -26,6 +28,36 @@ const BasketScreen = () => {
     }, {})
     setGroupedItemsInBasket(groupedItems)
   }, [items])
+
+  const onCheckout = async () => {
+    //  create a payment intent
+      const response = await axios.post('https://strip-payment.azurewebsites.net/api/delidash_function', {
+                  amount: basketTotal * 100
+              })
+    if (!response.data.paymentIntent) {
+      Alert.alert('Error', 'Something went wrong while processing your payment')
+      return
+    }
+   
+    const initialResponse = await initPaymentSheet({
+      paymentIntentClientSecret: response.data.paymentIntent,
+      merchantDisplayName: 'Delidash',
+    }) 
+
+    if (initialResponse.error) {
+      console.log('error', initialResponse.error)
+      Alert.alert('Error', 'Something went wrong while processing your payment')
+    } else {
+     const paymentRespones=   await presentPaymentSheet()
+      if(paymentRespones.error){
+        Alert.alert('Error', 'Something went wrong while processing your payment')
+        console.log('error', paymentRespones.error)
+      };
+
+      navigation.navigate('PreparingOrderScreen') 
+    }
+      
+  }
 
 
   return (
@@ -103,7 +135,7 @@ const BasketScreen = () => {
               {basketTotal + 40}
             </Text>
           </View>
-        <TouchableOpacity className="bg-[#00ccbb] p-4 rounded-lg "  onPress={()=> navigation.navigate('PreparingOrderScreen') } >
+        <TouchableOpacity className="bg-[#00ccbb] p-4 rounded-lg "  onPress={onCheckout } >
           <Text className="text-center text-white font-bold tetx-lg" >Place Order</Text>
           </TouchableOpacity>
         </View>
