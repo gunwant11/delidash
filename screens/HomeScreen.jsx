@@ -5,8 +5,7 @@ import { ChevronDownIcon, UserIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon
 import { Categories } from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import client  from '../sanity';
-// import { SafeAreaView } from 'react-native-safe-area-context';
-export default  HomeScreen = () => {
+const  HomeScreen = () => {
 
   const navigation = useNavigation();
   const [ featuredCategory, setFeaturedCategory ] = React.useState(null);
@@ -70,3 +69,5 @@ export default  HomeScreen = () => {
     </SafeAreaView>
   )
 }
+
+export default HomeScreen;

@@ -6,7 +6,8 @@ import { selectRestaurant } from '../redux/restaurentSlice'
 import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../redux/basketSlice'
 import { XCircleIcon } from 'react-native-heroicons/solid'
 import axios from 'axios'
-import { useStripe } from '@stripe/stripe-react-native'
+
+// import { useStripe } from 'null-loader'
 
 const BasketScreen = () => {
 
@@ -16,12 +17,8 @@ const BasketScreen = () => {
   const dispatch = useDispatch()
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
   const basketTotal = useSelector(selectBasketTotal)
-  const { initPaymentSheet, presentPaymentSheet } = useStripe()
+  // const { initPaymentSheet, presentPaymentSheet } = useStripe()
   useMemo(() => {
-    // const groupedItems = items.reduce((results, item) => {
-    //   (results[items.id] = results[items.id] || []).push(item);
-    //   return results;
-    // }, {})
     const groupedItems = items.reduce((results, item) => {
       (results[item.id] = results[item.id] || []).push(item);
       return results;
@@ -31,31 +28,31 @@ const BasketScreen = () => {
 
   const onCheckout = async () => {
     //  create a payment intent
-      const response = await axios.post('https://strip-payment.azurewebsites.net/api/delidash_function', {
-                  amount: basketTotal * 100
-              })
-    if (!response.data.paymentIntent) {
-      Alert.alert('Error', 'Something went wrong while processing your payment')
-      return
-    }
+    //   const response = await axios.post('https://strip-payment.azurewebsites.net/api/delidash_function', {
+    //               amount: basketTotal * 100
+    //           })
+    // if (!response.data.paymentIntent) {
+    //   Alert.alert('Error', 'Something went wrong while processing your payment')
+    //   return
+    // }
    
-    const initialResponse = await initPaymentSheet({
-      paymentIntentClientSecret: response.data.paymentIntent,
-      merchantDisplayName: 'Delidash',
-    }) 
+    // const initialResponse = await initPaymentSheet({
+    //   paymentIntentClientSecret: response.data.paymentIntent,
+    //   merchantDisplayName: 'Delidash',
+    // }) 
 
-    if (initialResponse.error) {
-      console.log('error', initialResponse.error)
-      Alert.alert('Error', 'Something went wrong while processing your payment')
-    } else {
-     const paymentRespones=   await presentPaymentSheet()
-      if(paymentRespones.error){
-        Alert.alert('Error', 'Something went wrong while processing your payment')
-        console.log('error', paymentRespones.error)
-      };
+    // if (initialResponse.error) {
+    //   console.log('error', initialResponse.error)
+    //   Alert.alert('Error', 'Something went wrong while processing your payment')
+    // } else {
+    //  const paymentRespones=   await presentPaymentSheet()
+    //   if(paymentRespones.error){
+    //     Alert.alert('Error', 'Something went wrong while processing your payment')
+    //     console.log('error', paymentRespones.error)
+    //   };
 
-      navigation.navigate('PreparingOrderScreen') 
-    }
+    //   navigation.navigate('PreparingOrderScreen') 
+    // }
       
   }
 

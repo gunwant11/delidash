@@ -41,7 +41,8 @@
       "package": "com.gunwant11.deliveroo"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      // "bundler": "metro"
     },
     "extra": {
       "eas": {

@@ -9,17 +9,17 @@ import { store } from './redux/store';
 import BasketScreen from './screens/BasketScreen';
 import PreparingOrderScreen from './screens/PreparingOrderScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
-import { StripeProvider } from '@stripe/stripe-react-native';
+// import { StripeProvider } from '@stripe/stripe-react-native';
 
 
 const Stack = createNativeStackNavigator();
-const STRIPE_KEY='pk_test_51NcC2xSAU9k44JQPb5gRT8pxS6GEEDSxCR0uPv7c7yU9ueoeaftpXZkQpdBUEkZiZy0g8MRRKdzi0hndz4OgmK4A00DQdxSNV9'
+// const STRIPE_KEY='pk_test_51NcC2xSAU9k44JQPb5gRT8pxS6GEEDSxCR0uPv7c7yU9ueoeaftpXZkQpdBUEkZiZy0g8MRRKdzi0hndz4OgmK4A00DQdxSNV9'
 
 export default function App() {
   return (
     <NavigationContainer>
       <Provider store={store} >
-        <StripeProvider publishableKey={STRIPE_KEY} >
+        {/* <StripeProvider publishableKey={STRIPE_KEY} > */}
           <Stack.Navigator>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Restaurant" component={RestaurantScreen} />
@@ -42,7 +42,7 @@ export default function App() {
               }}
             />
           </Stack.Navigator>
-        </StripeProvider>
+        {/* </StripeProvider> */}
       </Provider>
     </NavigationContainer>
   );
