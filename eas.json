@@ -8,6 +8,14 @@
       "distribution": "internal"
     },
     "preview": {
+      "env": {
+        "ANDROID_SDK_ROOT": "/home/gunwant11/Android/Sdk"
+    },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview2": {
       "android": {
         "buildType": "apk"
       }
