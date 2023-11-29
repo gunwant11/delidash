@@ -6,7 +6,7 @@ Welcome to Delidash, your go-to solution for a seamless food delivery experience
 
 ## Features:
 
-- **React Native & Redux**: Delidash is built on the React Native framework, ensuring a responsive and dynamic user interface. Redux is implemented to enhance state management, resulting in a seamless and efficient user experience.
+- **React Native & Expo**: Delidash is built on the React Native framework, ensuring a responsive and dynamic user interface. Redux is implemented to enhance state management, resulting in a seamless and efficient user experience.
 
 - **Stripe Integration**: Make secure and hassle-free payments using the popular Stripe payment gateway. Delidash ensures a smooth transaction process, allowing users to pay for their orders with confidence.
 
@@ -40,16 +40,16 @@ Welcome to Delidash, your go-to solution for a seamless food delivery experience
 2. **Install Dependencies:**
    ```bash
    cd delidash
-   npm install
+   yarn
    ```
 
 3. **Run the App:**
    ```bash
-   npm start
+   npx expo start
    ```
 
 4. **Explore Delidash:**
-   Open the app on your preferred emulator or device and start exploring the features. Place orders, track deliveries, and enjoy the convenience of Delidash!
+   Open the app on your preferred emulator(Andriod) or device connecting via usb and start exploring the features. Place orders, track deliveries, and enjoy the convenience of Delidash!
 
 ![Delidash Screenshots](link-to-more-images)
 
