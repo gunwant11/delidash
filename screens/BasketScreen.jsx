@@ -31,6 +31,7 @@ const BasketScreen = () => {
 
   const onCheckout = async () => {
     //  create a payment intent
+    try {
       const response = await axios.post('https://strip-payment.azurewebsites.net/api/delidash_function', {
                   amount: basketTotal * 100
               })
@@ -54,6 +55,14 @@ const BasketScreen = () => {
         console.log('error', paymentRespones.error)
       };
 
+      navigation.navigate('PreparingOrderScreen') 
+    }
+      
+    } catch (error) {
+      // Alert.alert('Error', 'Something went wrong while processing your payment'g)
+      console.log('error', error)
+    }
+    finally{
       navigation.navigate('PreparingOrderScreen') 
     }
       
